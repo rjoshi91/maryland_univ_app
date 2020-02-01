@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    String usernameController = "Bed Room";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/SplashPanelScreen': (BuildContext context) => new LetsGetStartedSplashScreen(),
         '/SignUpScreen': (BuildContext context) => new SignUp(),
         '/ControlPanelScreen': (BuildContext context) => new ControlPanelScreen(),
-        '/RoomFunctioningScreen': (BuildContext context) => new RoomFunctioningScreen()
+        '/RoomFunctioningScreen': (BuildContext context) => new RoomFunctioningScreen(usernameController)
       },
 
     );

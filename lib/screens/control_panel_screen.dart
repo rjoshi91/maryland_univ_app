@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:maryland_univ_app/screens/room_functioning_screen.dart';
 
 class ControlPanelScreen extends StatefulWidget {
 
@@ -12,7 +13,7 @@ class ControlPanelScreen extends StatefulWidget {
 class _ControlPanelScreenState extends State<ControlPanelScreen> {
 
   bool isChecked = false;
-
+  String usernameController = 'Bed Room';
   @override
   void initState() {
     super.initState();
@@ -94,58 +95,66 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
 
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0, right: 10.0,left: 15.0, bottom: 10),
-                        child: Container(
-                          height: 160,
-                          width: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RoomFunctioningScreen(usernameController)));
+                          },
+                          child: Container(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(30.0),
                                   topLeft: Radius.circular(30.0),
                                   bottomLeft: Radius.circular(30.0),
                                   bottomRight: Radius.circular(30.0),
-                              ),
-                              color: Colors.white),
-
-                          child: Column(
-                            children: <Widget>[
-
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
-                                  child: Image.asset('images/bed.png',),
                                 ),
-                              ),
+                                color: Colors.white),
 
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 0.0, bottom: 0.0),
-                                child: Text(
-                                  "Bed Room",
-                                  style: TextStyle(
-                                    color: Color(0xf004262F),
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                            child: Column(
+                              children: <Widget>[
 
-                              Align(
+                                Align(
                                   alignment: Alignment.topLeft,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
-                                    child: Text(
-                                      "4 Lights",
-                                      style: TextStyle(
-                                        color: Colors.amber[700],
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
+                                    child: Image.asset('images/bed.png',),
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 0.0, bottom: 0.0),
+                                  child: Text(
+                                    "Bed Room",
+                                    style: TextStyle(
+                                      color: Color(0xf004262F),
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  )
-                              ),
+                                  ),
+                                ),
+
+                                Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
+                                      child: Text(
+                                        "4 Lights",
+                                        style: TextStyle(
+                                          color: Colors.amber[700],
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                ),
 
 
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -194,8 +203,8 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                   child: Text(
                                     "2 Lights",
                                     style: TextStyle(
-                                      color: Colors.amber[900],
-                                      fontSize: 18.0,
+                                      color: Colors.amber[700],
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -236,14 +245,14 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                 alignment: Alignment.topLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
-                                  child: Image.asset('images/bed.png',),
+                                  child: Image.asset('images/kitchen.png',),
                                 ),
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 0.0, bottom: 0.0),
+                                padding: const EdgeInsets.only(top: 20.0, right: 50.0, left: 0.0, bottom: 0.0),
                                 child: Text(
-                                  "Bed Room",
+                                  "Kitchen",
                                   style: TextStyle(
                                     color: Color(0xf004262F),
                                     fontSize: 20.0,
@@ -257,10 +266,10 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
                                     child: Text(
-                                      "4 Lights",
+                                      "5 Lights",
                                       style: TextStyle(
-                                        color: Colors.amber[900],
-                                        fontSize: 18.0,
+                                        color: Colors.amber[700],
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -303,7 +312,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0, right: 30.0, left: 0.0, bottom: 0.0),
                                 child: Text(
-                                  "Bathtube",
+                                  "Bathroom",
                                   style: TextStyle(
                                     color: Color(0xf004262F),
                                     fontSize: 20.0,
@@ -319,8 +328,8 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                     child: Text(
                                       "1 Lights",
                                       style: TextStyle(
-                                        color: Colors.amber[900],
-                                        fontSize: 18.0,
+                                        color: Colors.amber[700],
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -362,14 +371,14 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                 alignment: Alignment.topLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
-                                  child: Image.asset('images/bed.png',),
+                                  child: Image.asset('images/house.png',),
                                 ),
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 0.0, bottom: 0.0),
+                                padding: const EdgeInsets.only(top: 20.0, right: 40.0, left: 0.0, bottom: 0.0),
                                 child: Text(
-                                  "Bed Room",
+                                  "Outdoor",
                                   style: TextStyle(
                                     color: Color(0xf004262F),
                                     fontSize: 20.0,
@@ -383,10 +392,10 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
                                     child: Text(
-                                      "4 Lights",
+                                      "5 Lights",
                                       style: TextStyle(
-                                        color: Colors.amber[900],
-                                        fontSize: 18.0,
+                                        color: Colors.amber[700],
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -445,8 +454,8 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                                     child: Text(
                                       "2 Lights",
                                       style: TextStyle(
-                                        color: Colors.amber[900],
-                                        fontSize: 18.0,
+                                        color: Colors.amber[700],
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -462,11 +471,11 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                     ],
                   ),
 
-               ],
+                ],
+              ),
             ),
           ),
-        ),
-      ]),
+        ]),
       ),
     );
   } //build

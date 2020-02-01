@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:maryland_univ_app/screens/signin_screen.dart';
 
 class RoomFunctioningScreen extends StatefulWidget {
+  final String usernameController;//if you have multiple values add here
+  RoomFunctioningScreen(this.usernameController, {Key key}): super(key: key);//add also..example this.abc,this...
 
-  const RoomFunctioningScreen({Key key,}) : super(key: key);
 
   @override
   _RoomFunctioningScreenState createState() => new _RoomFunctioningScreenState();
@@ -61,7 +62,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20.0,),
                             child: Text(
-                              "Back",
+                             widget.usernameController,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
