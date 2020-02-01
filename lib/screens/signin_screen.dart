@@ -13,6 +13,13 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
+  //  _formKey and _autoValidate
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
+  String _username;
+  String _password;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,10 +85,11 @@ class _SignInState extends State<SignIn> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(left: 35.0, top: 30.0),
-                    child: TextField(
+                    child: TextFormField(
                       autocorrect: false,
                       enableSuggestions: false,
                       autofocus: true,
+                      keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         focusedBorder: InputBorder.none,
                         border: new UnderlineInputBorder(
@@ -147,7 +155,7 @@ class _SignInState extends State<SignIn> {
 
                           Padding(
                             padding: const EdgeInsets.only(right: 20, left: 60),
-                            child: Text("Don't have an account?",style: TextStyle(fontSize: 18.0),),
+                            child: Text("Don't have an account?",style: TextStyle(fontSize: 15.0),),
                           ),
 
                           Padding(
@@ -162,7 +170,7 @@ class _SignInState extends State<SignIn> {
 
                               child: Text("SIGN UP",
                                   style: TextStyle(
-                                    fontSize: 18.0,
+                                    fontSize: 15.0,
                                     color: Color(0xf001A69F),
                                     fontWeight: FontWeight.bold,
                                   )),

@@ -51,7 +51,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                         )),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 40.0, left: 110.0, bottom: 10.0),
+                      padding: const EdgeInsets.only(top: 40.0, left: 70.0, bottom: 10.0),
                       child: Image.asset('images/user.png', width: 130, height: 130,),
                     ),
                   ],
@@ -68,11 +68,10 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40.0),
                       topLeft: Radius.circular(40.0)),
-                  color: Colors.white70),
+                  color:Color(0x0f0F7F8FC)),
 
               child: Column(
                 children: <Widget>[
-
                   Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
@@ -94,7 +93,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                       //Bed Room Card
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 30, bottom: 10),
+                        padding: const EdgeInsets.only(top: 10.0, right: 10.0,left: 15.0, bottom: 10),
                         child: Container(
                           height: 160,
                           width: 160,
@@ -153,61 +152,58 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
 
                       //Living Room Card
 
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 20, bottom: 10),
-                        child: Container(
-                          height: 160,
-                          width: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(30.0),
-                                topLeft: Radius.circular(30.0),
-                                bottomLeft: Radius.circular(30.0),
-                                bottomRight: Radius.circular(30.0),
+                      Container(
+                        height: 160,
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30.0),
+                              topLeft: Radius.circular(30.0),
+                              bottomLeft: Radius.circular(30.0),
+                              bottomRight: Radius.circular(30.0),
+                            ),
+                            color: Colors.white),
+
+                        child: Column(
+                          children: <Widget>[
+
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
+                                child: Image.asset('images/room.png',),
                               ),
-                              color: Colors.white),
+                            ),
 
-                          child: Column(
-                            children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20.0, right: 10.0, left: 0.0, bottom: 0.0),
+                              child: Text(
+                                "Living room",
+                                style: TextStyle(
+                                  color: Color(0xf004262F),
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
 
-                              Align(
+                            Align(
                                 alignment: Alignment.topLeft,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 30.0, right: 10.0, left:20.0, bottom: 0.0),
-                                  child: Image.asset('images/room.png',),
-                                ),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20.0, right: 10.0, left: 0.0, bottom: 0.0),
-                                child: Text(
-                                  "Living room",
-                                  style: TextStyle(
-                                    color: Color(0xf004262F),
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-
-                              Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
-                                    child: Text(
-                                      "2 Lights",
-                                      style: TextStyle(
-                                        color: Colors.amber[900],
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                  padding: const EdgeInsets.only(top: 0.0, left: 20.0, right: 10.0,  bottom: 10.0),
+                                  child: Text(
+                                    "2 Lights",
+                                    style: TextStyle(
+                                      color: Colors.amber[900],
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  )
-                              ),
+                                  ),
+                                )
+                            ),
 
 
-                            ],
-                          ),
+                          ],
                         ),
                       ),
 
@@ -220,7 +216,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                       //Kitchen Card
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 30, bottom: 10),
+                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 15.0, bottom: 10),
                         child: Container(
                           height: 160,
                           width: 160,
@@ -280,7 +276,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                       //Bathroom Card
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 20, bottom: 10),
+                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, bottom: 10),
                         child: Container(
                           height: 160,
                           width: 160,
@@ -346,7 +342,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                       //Outdoor Card
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 30, bottom: 10),
+                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 15, bottom: 10),
                         child: Container(
                           height: 160,
                           width: 160,
@@ -406,7 +402,7 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
                       //Balcony Card
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 20, bottom: 10),
+                        padding: const EdgeInsets.only(top: 10.0, right: 10.0, bottom: 10),
                         child: Container(
                           height: 160,
                           width: 160,

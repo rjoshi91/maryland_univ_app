@@ -25,12 +25,10 @@ class _SignUpState extends State<SignUp> {
           Container(
             child: Stack(
               children: <Widget>[
-
                 Padding(
-                  padding: const EdgeInsets.only(top:330.0, left: 20.0),
+                  padding: const EdgeInsets.only(top:100.0, left: 5.0),
                   child: Row(
                     children: <Widget>[
-
                       InkWell(
                         onTap: () {
                           Navigator.push(context,
@@ -49,7 +47,7 @@ class _SignUpState extends State<SignUp> {
                       Align(
                           alignment: Alignment.topLeft,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0,),
+                            padding: const EdgeInsets.only(left: 5.0,),
                             child: Text(
                               "Back",
                               style: TextStyle(
