@@ -280,7 +280,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                             width: 230,
                             child: Slider(
                                 min: 0,
-                                max: 500,
+                                max: 100,
                                 divisions: 5,
                                 value: _value,
                                 onChanged: (value) {

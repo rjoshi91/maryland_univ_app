@@ -40,10 +40,11 @@ class _SignUpState extends State<SignUp> {
                     children: <Widget>[
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn()
-                            ),
-                          );
+                         setState(() {
+                           Navigator
+                               .of(context)
+                               .pushReplacement(new MaterialPageRoute(builder: (BuildContext context) => SignIn()));
+                         });
                         },
                         child: Container(
                           child: Align(
@@ -235,7 +236,7 @@ class _SignUpState extends State<SignUp> {
                                 toastMessage("Username: $_username\nEmail: $_email\nPassword: $_password");
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => LetsGetStartedSplashScreen()
+                                  MaterialPageRoute(builder: (context) => SignIn()
                                   ),
                                 );
                               }
