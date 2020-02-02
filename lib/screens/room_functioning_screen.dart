@@ -13,6 +13,17 @@ class RoomFunctioningScreen extends StatefulWidget {
 }
 
 class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
+  int currentTabIndex = 0;
+  List<Widget> tabs = [
+    ControlPanelScreen(),
+    ControlPanelScreen(),
+    ControlPanelScreen()
+  ];
+  onTapped(int index) {
+    setState(() {
+      currentTabIndex = index;
+    });
+  }
 
   bool isChecked = false;
 
@@ -418,6 +429,24 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
             ),
           ),
         ]),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTapped,
+        currentIndex: currentTabIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset('images/bulb.png'),
+            title: Text(""),
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('images/icon_feather_home.png'),
+            title: Text(""),
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('images/icon_feather_settings.png'),
+            title: Text(""),
+          )
+        ],
       ),
     );
   }
