@@ -12,6 +12,7 @@ class ControlPanelScreen extends StatefulWidget {
 
 class _ControlPanelScreenState extends State<ControlPanelScreen> {
   int currentTabIndex = 0;
+
   List<Widget> tabs = [
     ControlPanelScreen(),
     ControlPanelScreen(),

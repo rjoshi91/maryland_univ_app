@@ -5,6 +5,7 @@ import 'package:maryland_univ_app/screens/control_panel_screen.dart';
 
 
 class RoomFunctioningScreen extends StatefulWidget {
+
   final String usernameController; //if you have multiple values add here
   RoomFunctioningScreen(this.usernameController, {Key key}): super(key: key);//add also..example this.abc,this...
 
@@ -13,6 +14,67 @@ class RoomFunctioningScreen extends StatefulWidget {
 }
 
 class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
+
+  Future<int> updateBackgroundColor(int currentColor) async {
+
+    return currentColor;
+  }
+
+  int currentColorSelected = 0;
+
+  final List<Color> bgColors = [
+    Colors.red,
+    Colors.purple,
+    Colors.deepPurple,
+    Colors.indigo,
+    Colors.blue,
+    Colors.lightBlue,
+    Colors.cyan,
+    Colors.teal,
+    Colors.green,
+    Colors.lightGreen,
+    Colors.lime,
+    Colors.yellow,
+    Colors.amber,
+    Colors.orange,
+    Colors.deepOrange,
+    Colors.brown,
+    Colors.grey,
+    Colors.blueGrey,
+  ];
+
+  final List<String> themeText = [
+    "Main Light",
+    "Desk Light",
+    "Bed Light",
+    "Street Light",
+    "Outdoor Lamp",
+  ];
+
+  int _currentIndex = 0;
+  _onChanged() { //update with a new color when the user taps button
+    int _colorCount = bgColors.length;
+
+    setState(() {
+      if (_currentIndex == _colorCount - 1) {
+        _currentIndex = 0;
+      } else {
+        _currentIndex += 1;
+      }
+    });
+
+    //setState(() => (_currentIndex == _colorCount - 1) ? _currentIndex = 1 : _currentIndex += 1);
+  }
+  int _selectedIndex;
+  _onSelected(int index) {
+
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  double _value = 0;
+
   int currentTabIndex = 0;
   List<Widget> tabs = [
     ControlPanelScreen(),
@@ -125,13 +187,14 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                           padding: const EdgeInsets.only(top: 40.0, left: 160.0, bottom: 10.0),
                           child: Icon(
                             Icons.wb_incandescent,
-                            color: Colors.green,
+                            color: bgColors[currentColorSelected],
                             size: 60.0,
                           ),
                         ),
 
                       ],
                     ),
+
                     Row(
                       children: <Widget>[
                         Container(
@@ -141,8 +204,8 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
                               physics: const ClampingScrollPhysics(),
-                              itemCount: 10,
-                              reverse: true, //makes the list appear in descending order
+                              itemCount: 5,
+                              reverse: false, //makes the list appear in descending order
                               itemBuilder: (BuildContext context, int index) {
                                 return Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
@@ -162,7 +225,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 20.0),
             child: Container(
               height: 800,
               decoration: BoxDecoration(
@@ -200,6 +263,37 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                         ),
                       ),
 
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: Colors.orange[300],
+                            inactiveTrackColor: Colors.orange[300],
+                            trackShape: RectangularSliderTrackShape(),
+                            trackHeight: 2.0,
+                            thumbColor: Colors.white,
+                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                            overlayColor: Colors.white.withAlpha(32),
+                            overlayShape: RoundSliderOverlayShape(overlayRadius: 28.0),
+                          ),
+                          child: Container(
+                            width: 230,
+                            child: Slider(
+                                min: 0,
+                                max: 500,
+                                divisions: 5,
+                                value: _value,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _value = value;
+                                  }
+                                  );
+                                }
+                                ),
+                          ),
+                        ),
+                      ),
+
                       Align(
                         alignment: Alignment.topRight,
                         child: Padding(
@@ -225,6 +319,47 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                         ),
                       )
                   ),
+
+                  Container(
+                    height: 50,
+                    margin: EdgeInsets.only(right: 20, left: 20),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: bgColors.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 10, left: 8),
+                            height: 50,
+                            width: 50,
+                            child: Stack(
+                                children: <Widget>[
+                                  Center(
+                                    child: Container(
+                                        decoration: new BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: bgColors[index],
+                                        )
+                                    ),
+                                  ),
+                                ]
+                            ),
+                          ),
+                          onTap: (){
+                            currentColorSelected = bgColors.indexOf(bgColors[index], 0);
+                            setState(() {
+                              index = currentColorSelected;
+                            });
+                            updateBackgroundColor(currentColorSelected);
+                          },
+                        );
+                      },
+
+                    ),
+                  ),
+
+
+
 
                   Align(
                       alignment: Alignment.topLeft,
@@ -452,40 +587,61 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
   }
 
   Widget _buildItems(int index) {
-    return new Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(10.0),
-            topLeft: Radius.circular(10.0),
-            bottomLeft: Radius.circular(10.0),
-            bottomRight: Radius.circular(10.0),
-          ),
-          color: Colors.white),
-      padding: const EdgeInsets.all(10.0),
-      child: new Row(
-        children: [
-          new Row(children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 15.0, right: 10.0, left:10.0, bottom: 0.0),
-                child: Image.asset('images/surface2.png',),
-              ),
+    return InkWell(
+      onTap: (){
+        _onSelected(index);
+      },
+      child: new Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10.0),
+              topLeft: Radius.circular(10.0),
+              bottomLeft: Radius.circular(10.0),
+              bottomRight: Radius.circular(10.0),
             ),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0, right: 10.0, left: 0.0, bottom: 0.0),
-              child: Text(
-                "Main Light",
-                style: TextStyle(
-                  color: Colors.greenAccent,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
+            color:_selectedIndex != null && _selectedIndex == index
+                ? Colors.cyanAccent
+                : Colors.white,),
+        padding: const EdgeInsets.all(10.0),
+        child: new Row(
+          children: [
+            new Row(children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 15.0, right: 10.0, left:10.0, bottom: 0.0),
+                  child: InkWell(
+                    onTap: (){
+                      _onSelected(index);
+                    },
+                    child: Image.asset('images/surface2.png',color:  _selectedIndex != null && _selectedIndex == index
+                        ? Colors.white
+                        : Colors.cyanAccent,),
+                  ),
                 ),
               ),
-            ),
-          ])
-        ],
+
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0, right: 10.0, left: 0.0, bottom: 0.0),
+                child: InkWell(
+                  onTap: (){
+                    _onSelected(index);
+                  },
+                  child: Text(
+                    themeText[index],
+                    style: TextStyle(
+                      color: _selectedIndex != null && _selectedIndex == index
+                          ? Colors.white
+                          : Colors.cyanAccent,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ])
+          ],
+        ),
       ),
     );
   }

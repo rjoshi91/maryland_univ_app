@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maryland_univ_app/screens/signup_screen.dart';
 import 'package:maryland_univ_app/screens/splash_screen.dart';
+import 'package:responsive/responsive.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key key, this.title}) : super(key: key);
@@ -34,7 +35,7 @@ class _SignInState extends State<SignIn> {
                 Align(
                     alignment: Alignment.topLeft,
                     child: Image.asset(
-                      'images/mask_group_2.png', width: 990, height: 390,)),
+                      'images/mask_group_2.png', width: 800, height: 300,)),
               ],
             ),
           ),
@@ -200,7 +201,6 @@ class _SignInState extends State<SignIn> {
                         child: Center(
                           child: Row(
                             children: <Widget>[
-
                               Padding(
                                 padding: const EdgeInsets.only(
                                     right: 20, left: 60),
