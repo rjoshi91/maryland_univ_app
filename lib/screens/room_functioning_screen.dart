@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:maryland_univ_app/screens/signin_screen.dart';
+import 'package:flutter/widgets.dart';
+import 'package:maryland_univ_app/screens/control_panel_screen.dart';
+
 
 class RoomFunctioningScreen extends StatefulWidget {
-  final String usernameController;//if you have multiple values add here
+  final String usernameController; //if you have multiple values add here
   RoomFunctioningScreen(this.usernameController, {Key key}): super(key: key);//add also..example this.abc,this...
-
 
   @override
   _RoomFunctioningScreenState createState() => new _RoomFunctioningScreenState();
@@ -36,171 +36,427 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
           Container(
             child: Stack(
               children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
 
-                Padding(
-                  padding: const EdgeInsets.only(top:330.0, left: 20.0),
-                  child: Row(
-                    children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(top: 50.0, left: 5.0, bottom: 0.0),
+                              child: Row(
+                                children: <Widget>[
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) => ControlPanelScreen()
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: Image.asset('images/icon_ionic_md_arrow_round_back.png', height: 20, width: 40,)
+                                      ),
+                                    ),
+                                  ),
 
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn()
+                                  Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 0.0, left: 5.0, bottom: 0.0),
+                                        child: Text(
+                                          "Bed",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 35.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      )),
+
+                                ],
+                              ),
                             ),
-                          );
-                        },
-                        child: Container(
-                          child: Align(
-                              alignment: Alignment.topRight,
-                              child: Image.asset('images/icon_ionic_md_arrow_round_back.png', height: 20, width: 40,)
+
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 0.0, left: 5.0, bottom: 10.0),
+                                  child: Text(
+                                    "Room",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 35.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )),
+
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 5.0, left: 0.0, bottom: 10.0),
+                                  child: Text(
+                                    "4 Lights",
+                                    style: TextStyle(
+                                      color: Colors.amber[600],
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )),
+
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40.0, left: 160.0, bottom: 10.0),
+                          child: Icon(
+                            Icons.wb_incandescent,
+                            color: Colors.green,
+                            size: 60.0,
                           ),
                         ),
-                      ),
 
-                      Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0,),
-                            child: Text(
-                             widget.usernameController,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,),
-                            ),
-                          )
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          child: new ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              physics: const ClampingScrollPhysics(),
+                              itemCount: 10,
+                              reverse: true, //makes the list appear in descending order
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 5.0),
+                                  child: _buildItems(index),
+                                );
+                              }),
+                        ),
+
+
+                      ],
+                    ),
+
+                  ],
                 ),
-
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Image.asset('images/mask_group_2.png',)
-                ),
-
               ],
             ),
           ),
 
-          Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 10.0),
-                child: Text(
-                  "Create New Account",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25.0,),
-                ),
-              )),
-
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: Container(
-              height: 409,
+              height: 800,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40.0),
                       topLeft: Radius.circular(40.0)),
-                  color: Colors.white),
+                  color:Color(0x0f0F7F8FC)),
+
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 35.0, top: 30.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        focusedBorder: InputBorder.none,
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        prefixIcon: Image.asset("images/icon_feather_user.png"),
-                        hintText: "Username",
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 35.0, top: 20.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        focusedBorder: InputBorder.none,
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        prefixIcon: Image.asset("images/icon_feather_lock.png"),
-                        hintText: "Password",
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 35.0, top: 20.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        focusedBorder: InputBorder.none,
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        prefixIcon: Image.asset("images/icon_feather_lock.png"),
-                        hintText: "Email",
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only( top:30.0,left: 40.0),
-                    child: Row(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Checkbox(
-                              activeColor: Color(0xf001A69F),
-                              value: isChecked,
-                              onChanged: (value) {
-                                setState(() {
-                                  isChecked = value;
-                                });
-                              },
-                            ),
-                          ],
+
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 10.0),
+                        child: Text(
+                          "Intensity",
+                          style: TextStyle(
+                            color: Color(0xf004262F),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                  text: 'I have accepted the ',
-                                  style: TextStyle(fontSize: 13, color: Colors.black)),
-                              TextSpan(
-                                  text: 'Terms & Condition',
+                      )
+                  ),
+
+                  Row(
+                    children: <Widget>[
+
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20.0, right: 10.0, left: 30.0, bottom: 0.0),
+                          child: Image.asset('images/solution.png',),
+                        ),
+                      ),
+
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20.0, right: 10.0, left:20.0, bottom: 0.0),
+                          child: Image.asset('images/solution_1.png',),
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 10.0),
+                        child: Text(
+                          "Colors",
+                          style: TextStyle(
+                            color: Color(0xf004262F),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                  ),
+
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 10.0),
+                        child: Text(
+                          "Scenes",
+                          style: TextStyle(
+                            color: Color(0xf004262F),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, left: 20.0, bottom: 10.0),
+                    child: Row(
+
+                      children: <Widget>[
+
+                        Container(
+                          height: 60,
+                          width: 160,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10.0),
+                                topLeft: Radius.circular(10.0),
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                              ),
+                              color: Colors.orange[200]),
+
+                          child: Row(
+                            children: <Widget>[
+
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0, right: 10.0, left:20.0, bottom: 0.0),
+                                  child: Image.asset('images/surface2.png',color: Colors.white, ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 15.0, bottom: 0.0),
+                                child: Text(
+                                  "Birthday",
                                   style: TextStyle(
-                                      fontSize: 13,
-                                      color: Color(0xf001A69F),
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            height: 60,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.0),
+                                  topLeft: Radius.circular(10.0),
+                                  bottomLeft: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0),
+                                ),
+                                color: Colors.purple[200]),
+
+                            child: Row(
+                              children: <Widget>[
+
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20.0, right: 10.0, left:20.0, bottom: 0.0),
+                                    child: Image.asset('images/surface2.png',color: Colors.white, ),
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 15.0, bottom: 0.0),
+                                  child: Text(
+                                    "Party",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline),
-                                  recognizer: TapGestureRecognizer()..onTap = () {
-                                    print('You clicked on me!');
-                                  })
-                            ])),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+
                       ],
                     ),
                   ),
+
                   Padding(
-                    padding: const EdgeInsets.only(left: 35.0,top:30.0, right: 35.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: RaisedButton(
-                        color: Color(0xf001A69F),
-                        onPressed: () {},
-                        child: Text("SIGN UP",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                                color: Colors.white)),
-                      ),
+                    padding: const EdgeInsets.only(top: 0.0, left: 10.0, bottom: 10.0),
+                    child: Row(
+
+                      children: <Widget>[
+
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            height: 60,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.0),
+                                  topLeft: Radius.circular(10.0),
+                                  bottomLeft: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0),
+                                ),
+                                color: Colors.blue[200]),
+
+                            child: Row(
+                              children: <Widget>[
+
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20.0, right: 10.0, left:20.0, bottom: 0.0),
+                                    child: Image.asset('images/surface2.png',color: Colors.white, ),
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 15.0, bottom: 0.0),
+                                  child: Text(
+                                    "Relax",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        Container(
+                          height: 60,
+                          width: 160,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10.0),
+                                topLeft: Radius.circular(10.0),
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                              ),
+                              color: Colors.green[200]),
+
+                          child: Row(
+                            children: <Widget>[
+
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0, right: 10.0, left:20.0, bottom: 0.0),
+                                  child: Image.asset('images/surface2.png',color: Colors.white, ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 15.0, bottom: 0.0),
+                                child: Text(
+                                  "Fun",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
+
+
                 ],
               ),
             ),
           ),
         ]),
+      ),
+    );
+  }
+
+  Widget _buildItems(int index) {
+    return new Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+          color: Colors.white),
+      padding: const EdgeInsets.all(10.0),
+      child: new Row(
+        children: [
+          new Row(children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15.0, right: 10.0, left:10.0, bottom: 0.0),
+                child: Image.asset('images/surface2.png',),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0, right: 10.0, left: 0.0, bottom: 0.0),
+              child: Text(
+                "Main Light",
+                style: TextStyle(
+                  color: Colors.greenAccent,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ])
+        ],
       ),
     );
   }
