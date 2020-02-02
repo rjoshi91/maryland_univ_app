@@ -34,7 +34,6 @@ class _ControlPanelScreenState extends State<ControlPanelScreen> {
           Container(
             child: Stack(
               children: <Widget>[
-
                 Row(
                   children: <Widget>[
                     Align(
