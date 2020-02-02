@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maryland_univ_app/screens/signup_screen.dart';
 import 'package:maryland_univ_app/screens/splash_screen.dart';
-import 'package:responsive/responsive.dart';
+
 
 class SignIn extends StatefulWidget {
   SignIn({Key key, this.title}) : super(key: key);
@@ -79,7 +79,7 @@ class _SignInState extends State<SignIn> {
             child: Form(
               key: _formKey,
               child: Container(
-                height: 340,
+                height: 440,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(40.0),

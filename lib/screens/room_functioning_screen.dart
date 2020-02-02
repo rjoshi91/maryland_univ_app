@@ -25,22 +25,22 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
   final List<Color> bgColors = [
     Colors.red,
     Colors.purple,
-    Colors.deepPurple,
-    Colors.indigo,
+//    Colors.deepPurple,
+//    Colors.indigo,
     Colors.blue,
-    Colors.lightBlue,
-    Colors.cyan,
-    Colors.teal,
+//    Colors.lightBlue,
+//    Colors.cyan,
+//    Colors.teal,
     Colors.green,
-    Colors.lightGreen,
-    Colors.lime,
+//    Colors.lightGreen,
+//    Colors.lime,
     Colors.yellow,
-    Colors.amber,
-    Colors.orange,
-    Colors.deepOrange,
-    Colors.brown,
-    Colors.grey,
-    Colors.blueGrey,
+//    Colors.amber,
+//    Colors.orange,
+//    Colors.deepOrange,
+//    Colors.brown,
+//    Colors.grey,
+//    Colors.blueGrey,
   ];
 
   final List<String> themeText = [
@@ -51,20 +51,22 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
     "Outdoor Lamp",
   ];
 
-  int _currentIndex = 0;
-  _onChanged() { //update with a new color when the user taps button
-    int _colorCount = bgColors.length;
+//  int _currentIndex = 0;
 
-    setState(() {
-      if (_currentIndex == _colorCount - 1) {
-        _currentIndex = 0;
-      } else {
-        _currentIndex += 1;
-      }
-    });
+//    _onChanged() { //update with a new color when the user taps button
+//    int _colorCount = bgColors.length;
+//
+//    setState(() {
+//      if (_currentIndex == _colorCount - 1) {
+//        _currentIndex = 0;
+//      } else {
+//        _currentIndex += 1;
+//      }
+//    });
+//
+//    //setState(() => (_currentIndex == _colorCount - 1) ? _currentIndex = 1 : _currentIndex += 1);
+//  }
 
-    //setState(() => (_currentIndex == _colorCount - 1) ? _currentIndex = 1 : _currentIndex += 1);
-  }
   int _selectedIndex;
   _onSelected(int index) {
 
@@ -289,7 +291,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                                   }
                                   );
                                 }
-                                ),
+                            ),
                           ),
                         ),
                       ),
@@ -322,14 +324,14 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
 
                   Container(
                     height: 50,
-                    margin: EdgeInsets.only(right: 20, left: 20),
+                    margin: EdgeInsets.only(right: 10, left: 10),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: bgColors.length,
                       itemBuilder: (context, index) {
                         return InkWell(
                           child: Container(
-                            margin: EdgeInsets.only(top: 10, left: 8),
+                            margin: EdgeInsets.only(top: 5, left: 5),
                             height: 50,
                             width: 50,
                             child: Stack(
@@ -354,12 +356,8 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                           },
                         );
                       },
-
                     ),
                   ),
-
-
-
 
                   Align(
                       alignment: Alignment.topLeft,
@@ -593,15 +591,15 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
       },
       child: new Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10.0),
-              topLeft: Radius.circular(10.0),
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-            ),
-            color:_selectedIndex != null && _selectedIndex == index
-                ? Colors.cyanAccent
-                : Colors.white,),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+          color:_selectedIndex != null && _selectedIndex == index
+              ? bgColors[currentColorSelected]   // Colors.green
+              : Colors.white,),
         padding: const EdgeInsets.all(10.0),
         child: new Row(
           children: [
@@ -616,7 +614,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                     },
                     child: Image.asset('images/surface2.png',color:  _selectedIndex != null && _selectedIndex == index
                         ? Colors.white
-                        : Colors.cyanAccent,),
+                        : bgColors[currentColorSelected],), // Colors.green
                   ),
                 ),
               ),
@@ -632,7 +630,7 @@ class _RoomFunctioningScreenState extends State<RoomFunctioningScreen> {
                     style: TextStyle(
                       color: _selectedIndex != null && _selectedIndex == index
                           ? Colors.white
-                          : Colors.cyanAccent,
+                          : bgColors[currentColorSelected], // Colors.green
                       fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                     ),
